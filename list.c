@@ -28,50 +28,76 @@ Node * createNode(void * data) {
     return new;
 }
 
+
 List * createList() {
-     return NULL;
+  List * new_list = (List *)malloc(sizeof(List));
+  assert(new_list != NULL);
+  new_list->head = NULL;
+  new_list->tail = NULL;
+  new_list->current = NULL;
+  return new_list;
 }
+
 
 void * firstList(List * list) {
+
+  if (list->head == NULL) {
     return NULL;
+  }
+  list->current = list->head;
+  return list->current->data;
 }
 
+
 void * nextList(List * list) {
+  if (list->current == NULL || list->current->next == NULL) {
     return NULL;
+  }
+  list->current = list->current->next;
+  return list->current->data;
 }
+
 
 void * lastList(List * list) {
     return NULL;
 }
 
+
 void * prevList(List * list) {
     return NULL;
 }
 
+
 void pushFront(List * list, void * data) {
 }
+
 
 void pushBack(List * list, void * data) {
     list->current = list->tail;
     pushCurrent(list,data);
 }
 
+
 void pushCurrent(List * list, void * data) {
 }
+
 
 void * popFront(List * list) {
     list->current = list->head;
     return popCurrent(list);
 }
 
+
 void * popBack(List * list) {
     list->current = list->tail;
     return popCurrent(list);
 }
 
+
 void * popCurrent(List * list) {
     return NULL;
 }
+
 
 void cleanList(List * list) {
     while (list->head != NULL) {
